@@ -7,6 +7,8 @@ Author: Jason Orendorff
 Author-email: jason.orendorff@gmail.com
 Maintainer: Jason R. Coombs
 Maintainer-email: jaraco@jaraco.com
+License: UNKNOWN
+Platform: UNKNOWN
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
@@ -17,25 +19,25 @@ Classifier: Topic :: Software Development :: Libraries :: Python Modules
 Requires-Python: >=3.8
 License-File: LICENSE
 Provides-Extra: docs
-Requires-Dist: sphinx >=3.5 ; extra == 'docs'
-Requires-Dist: sphinx <7.2.5 ; extra == 'docs'
-Requires-Dist: jaraco.packaging >=9.3 ; extra == 'docs'
-Requires-Dist: rst.linker >=1.9 ; extra == 'docs'
 Requires-Dist: furo ; extra == 'docs'
+Requires-Dist: jaraco.packaging (>=9.3) ; extra == 'docs'
+Requires-Dist: jaraco.tidelift (>=1.4) ; extra == 'docs'
+Requires-Dist: rst.linker (>=1.9) ; extra == 'docs'
 Requires-Dist: sphinx-lint ; extra == 'docs'
-Requires-Dist: jaraco.tidelift >=1.4 ; extra == 'docs'
+Requires-Dist: sphinx (<7.2.5) ; extra == 'docs'
+Requires-Dist: sphinx (>=3.5) ; extra == 'docs'
 Provides-Extra: testing
-Requires-Dist: pytest >=6 ; extra == 'testing'
-Requires-Dist: pytest-checkdocs >=2.4 ; extra == 'testing'
-Requires-Dist: pytest-cov ; extra == 'testing'
-Requires-Dist: pytest-enabler >=2.2 ; extra == 'testing'
-Requires-Dist: pytest-ruff ; extra == 'testing'
 Requires-Dist: appdirs ; extra == 'testing'
-Requires-Dist: packaging ; extra == 'testing'
 Requires-Dist: more-itertools ; extra == 'testing'
+Requires-Dist: packaging ; extra == 'testing'
 Requires-Dist: pygments ; extra == 'testing'
-Requires-Dist: pytest-black >=0.3.7 ; (platform_python_implementation != "PyPy") and extra == 'testing'
-Requires-Dist: pytest-mypy >=0.9.1 ; (platform_python_implementation != "PyPy") and extra == 'testing'
+Requires-Dist: pytest-checkdocs (>=2.4) ; extra == 'testing'
+Requires-Dist: pytest-cov ; extra == 'testing'
+Requires-Dist: pytest-enabler (>=2.2) ; extra == 'testing'
+Requires-Dist: pytest-ruff ; extra == 'testing'
+Requires-Dist: pytest (>=6) ; extra == 'testing'
+Requires-Dist: pytest-black (>=0.3.7) ; (platform_python_implementation != "PyPy") and extra == 'testing'
+Requires-Dist: pytest-mypy (>=0.9.1) ; (platform_python_implementation != "PyPy") and extra == 'testing'
 Requires-Dist: pywin32 ; (platform_system == "Windows" and python_version < "3.12") and extra == 'testing'
 
 .. image:: https://img.shields.io/pypi/v/path.svg
@@ -164,3 +166,5 @@ Available as part of the Tidelift Subscription.
 This project and the maintainers of thousands of other packages are working with Tidelift to deliver one enterprise subscription that covers all of the open source you use.
 
 `Learn more <https://tidelift.com/subscription/pkg/pypi-path?utm_source=pypi-path&utm_medium=referral&utm_campaign=github>`_.
+
+

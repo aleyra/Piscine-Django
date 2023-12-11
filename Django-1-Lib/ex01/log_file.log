@@ -418,3 +418,426 @@
 
 2023-12-08T09:07:39,159 Successfully installed path-16.9.1.dev3+geaafd29
 2023-12-08T09:07:39,168 Removed build tracker: '/tmp/pip-build-tracker-j_d11t03'
+2023-12-11T12:04:50,418 Using pip 22.0.2 from /usr/lib/python3/dist-packages/pip (python 3.10)
+2023-12-11T12:04:50,419 Non-user install due to --prefix or --target option
+2023-12-11T12:04:50,419 Created temporary directory: /tmp/pip-target-9g6qoga9
+2023-12-11T12:04:50,479 Created temporary directory: /tmp/pip-ephem-wheel-cache-oghrpjel
+2023-12-11T12:04:50,479 Created temporary directory: /tmp/pip-req-tracker-bry9on6e
+2023-12-11T12:04:50,479 Initialized build tracking at /tmp/pip-req-tracker-bry9on6e
+2023-12-11T12:04:50,479 Created build tracker: /tmp/pip-req-tracker-bry9on6e
+2023-12-11T12:04:50,479 Entered build tracker: /tmp/pip-req-tracker-bry9on6e
+2023-12-11T12:04:50,479 Created temporary directory: /tmp/pip-install-6bry097e
+2023-12-11T12:04:50,484 Collecting git+https://github.com/jaraco/path
+2023-12-11T12:04:50,484   Created temporary directory: /tmp/pip-req-build-vu7onm70
+2023-12-11T12:04:50,484   Cloning https://github.com/jaraco/path to /tmp/pip-req-build-vu7onm70
+2023-12-11T12:04:50,485   Running command git version
+2023-12-11T12:04:50,485   git version 2.34.1
+2023-12-11T12:04:50,485   Running command git clone --filter=blob:none --quiet https://github.com/jaraco/path /tmp/pip-req-build-vu7onm70
+2023-12-11T12:04:51,503   Running command git rev-parse HEAD
+2023-12-11T12:04:51,504   eaafd29633bc4af79ff6745d1f61549da6262356
+2023-12-11T12:04:51,504   Resolved https://github.com/jaraco/path to commit eaafd29633bc4af79ff6745d1f61549da6262356
+2023-12-11T12:04:51,505   Added git+https://github.com/jaraco/path to build tracker '/tmp/pip-req-tracker-bry9on6e'
+2023-12-11T12:04:51,505   Created temporary directory: /tmp/pip-build-env-09zmmq2r
+2023-12-11T12:04:51,506   Created temporary directory: /tmp/pip-standalone-pip-l05_b6jm
+2023-12-11T12:04:51,556   Running command pip subprocess to install build dependencies
+2023-12-11T12:04:52,198   Using pip 22.0.2 from /tmp/pip-standalone-pip-l05_b6jm/__env_pip__.zip/pip (python 3.10)
+2023-12-11T12:04:52,464   Collecting setuptools>=56
+2023-12-11T12:04:52,465     Using cached setuptools-69.0.2-py3-none-any.whl (819 kB)
+2023-12-11T12:04:52,504   Collecting setuptools_scm[toml]>=3.4.1
+2023-12-11T12:04:52,505     Using cached setuptools_scm-8.0.4-py3-none-any.whl (42 kB)
+2023-12-11T12:04:52,533   Collecting packaging>=20
+2023-12-11T12:04:52,533     Using cached packaging-23.2-py3-none-any.whl (53 kB)
+2023-12-11T12:04:52,552   Collecting typing-extensions
+2023-12-11T12:04:52,553     Using cached typing_extensions-4.9.0-py3-none-any.whl (32 kB)
+2023-12-11T12:04:52,571   Collecting tomli>=1
+2023-12-11T12:04:52,571     Using cached tomli-2.0.1-py3-none-any.whl (12 kB)
+2023-12-11T12:04:52,740   Installing collected packages: typing-extensions, tomli, setuptools, packaging, setuptools_scm
+2023-12-11T12:04:52,995   Successfully installed packaging-23.2 setuptools-69.0.2 setuptools_scm-8.0.4 tomli-2.0.1 typing-extensions-4.9.0
+2023-12-11T12:04:53,035   Running command Getting requirements to build wheel
+2023-12-11T12:04:53,134   /tmp/pip-build-env-09zmmq2r/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:04:53,134   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:04:53,134   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:04:53,134   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:04:53,134   Suggested workaround if applicable:
+2023-12-11T12:04:53,134    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:04:53,134      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:04:53,134      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:04:53,134     warnings.warn(
+2023-12-11T12:04:53,163   running egg_info
+2023-12-11T12:04:53,163   creating path.egg-info
+2023-12-11T12:04:53,164   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:04:53,176   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:04:53,187   Created temporary directory: /tmp/pip-standalone-pip-6ppiu9fa
+2023-12-11T12:04:53,235   Running command pip subprocess to install backend dependencies
+2023-12-11T12:04:53,869   Using pip 22.0.2 from /tmp/pip-standalone-pip-6ppiu9fa/__env_pip__.zip/pip (python 3.10)
+2023-12-11T12:04:54,050   Collecting wheel
+2023-12-11T12:04:54,051     Using cached wheel-0.42.0-py3-none-any.whl (65 kB)
+2023-12-11T12:04:54,176   Installing collected packages: wheel
+2023-12-11T12:04:54,194     Creating /tmp/pip-build-env-09zmmq2r/normal/local/bin
+2023-12-11T12:04:54,194     changing mode of /tmp/pip-build-env-09zmmq2r/normal/local/bin/wheel to 755
+2023-12-11T12:04:54,203   Successfully installed wheel-0.42.0
+2023-12-11T12:04:54,235   Created temporary directory: /tmp/pip-modern-metadata-zn4t535f
+2023-12-11T12:04:54,236   Running command Preparing metadata (pyproject.toml)
+2023-12-11T12:04:54,327   /tmp/pip-build-env-09zmmq2r/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:04:54,327   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:04:54,327   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:04:54,327   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:04:54,327   Suggested workaround if applicable:
+2023-12-11T12:04:54,327    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:04:54,327      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:04:54,327      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:04:54,327     warnings.warn(
+2023-12-11T12:04:54,355   running dist_info
+2023-12-11T12:04:54,356   creating /tmp/pip-modern-metadata-zn4t535f/path.egg-info
+2023-12-11T12:04:54,357   writing manifest file '/tmp/pip-modern-metadata-zn4t535f/path.egg-info/SOURCES.txt'
+2023-12-11T12:04:54,369   writing manifest file '/tmp/pip-modern-metadata-zn4t535f/path.egg-info/SOURCES.txt'
+2023-12-11T12:04:54,387   Source in /tmp/pip-req-build-vu7onm70 has version 16.9.1.dev3+geaafd29, which satisfies requirement path==16.9.1.dev3+geaafd29 from git+https://github.com/jaraco/path
+2023-12-11T12:04:54,388   Removed path==16.9.1.dev3+geaafd29 from git+https://github.com/jaraco/path from build tracker '/tmp/pip-req-tracker-bry9on6e'
+2023-12-11T12:04:54,395 Created temporary directory: /tmp/pip-unpack-zyf4q5gy
+2023-12-11T12:04:54,396 Building wheels for collected packages: path
+2023-12-11T12:04:54,396   Created temporary directory: /tmp/pip-wheel-qbsruu35
+2023-12-11T12:04:54,396   Destination directory: /tmp/pip-wheel-qbsruu35
+2023-12-11T12:04:54,396   Running command Building wheel for path (pyproject.toml)
+2023-12-11T12:04:54,488   /tmp/pip-build-env-09zmmq2r/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:04:54,488   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:04:54,488   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:04:54,488   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:04:54,488   Suggested workaround if applicable:
+2023-12-11T12:04:54,488    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:04:54,488      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:04:54,488      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:04:54,488     warnings.warn(
+2023-12-11T12:04:54,520   running bdist_wheel
+2023-12-11T12:04:54,537   running build
+2023-12-11T12:04:54,537   running build_py
+2023-12-11T12:04:54,538   creating build
+2023-12-11T12:04:54,538   creating build/lib
+2023-12-11T12:04:54,538   creating build/lib/path
+2023-12-11T12:04:54,538   copying path/masks.py -> build/lib/path
+2023-12-11T12:04:54,538   copying path/matchers.py -> build/lib/path
+2023-12-11T12:04:54,538   copying path/classes.py -> build/lib/path
+2023-12-11T12:04:54,538   copying path/__init__.py -> build/lib/path
+2023-12-11T12:04:54,538   running egg_info
+2023-12-11T12:04:54,552   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:04:54,552   copying path/__init__.pyi -> build/lib/path
+2023-12-11T12:04:54,552   copying path/classes.pyi -> build/lib/path
+2023-12-11T12:04:54,552   copying path/masks.pyi -> build/lib/path
+2023-12-11T12:04:54,552   copying path/matchers.pyi -> build/lib/path
+2023-12-11T12:04:54,552   copying path/py.typed -> build/lib/path
+2023-12-11T12:04:54,552   running install
+2023-12-11T12:04:54,553   running install_lib
+2023-12-11T12:04:54,553   creating build/bdist.linux-x86_64
+2023-12-11T12:04:54,553   creating build/bdist.linux-x86_64/wheel
+2023-12-11T12:04:54,553   creating build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,553   copying build/lib/path/__init__.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,553   copying build/lib/path/matchers.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,553   copying build/lib/path/classes.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,553   copying build/lib/path/masks.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,553   copying build/lib/path/matchers.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,553   copying build/lib/path/classes.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,553   copying build/lib/path/__init__.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,554   copying build/lib/path/masks.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,554   copying build/lib/path/py.typed -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:04:54,554   running install_egg_info
+2023-12-11T12:04:54,554   Copying path.egg-info to build/bdist.linux-x86_64/wheel/path-16.9.1.dev3+geaafd29.egg-info
+2023-12-11T12:04:54,554   running install_scripts
+2023-12-11T12:04:54,582   Created wheel for path: filename=path-16.9.1.dev3+geaafd29-py3-none-any.whl size=25004 sha256=fc172943d187488177958b9e8e73e7bfac536301542ccf3f4713b55d8c53c7e2
+2023-12-11T12:04:54,582   Stored in directory: /tmp/pip-ephem-wheel-cache-oghrpjel/wheels/50/15/7d/a5e9c9564f09a82270ad38c4a15db4a4483db2d3bfbb3b600d
+2023-12-11T12:04:54,583 Successfully built path
+2023-12-11T12:04:54,714 Installing collected packages: path
+2023-12-11T12:04:54,715   Running command git rev-parse HEAD
+2023-12-11T12:04:54,715   eaafd29633bc4af79ff6745d1f61549da6262356
+
+2023-12-11T12:04:54,731 Successfully installed path-16.9.1.dev3+geaafd29
+2023-12-11T12:04:54,733 Removed build tracker: '/tmp/pip-req-tracker-bry9on6e'
+2023-12-11T12:07:35,272 Using pip 22.0.2 from /usr/lib/python3/dist-packages/pip (python 3.10)
+2023-12-11T12:07:35,272 Non-user install due to --prefix or --target option
+2023-12-11T12:07:35,272 Created temporary directory: /tmp/pip-target-i501fahb
+2023-12-11T12:07:35,333 Created temporary directory: /tmp/pip-ephem-wheel-cache-v8u8rvyx
+2023-12-11T12:07:35,333 Created temporary directory: /tmp/pip-req-tracker-8y82dhyz
+2023-12-11T12:07:35,333 Initialized build tracking at /tmp/pip-req-tracker-8y82dhyz
+2023-12-11T12:07:35,333 Created build tracker: /tmp/pip-req-tracker-8y82dhyz
+2023-12-11T12:07:35,333 Entered build tracker: /tmp/pip-req-tracker-8y82dhyz
+2023-12-11T12:07:35,333 Created temporary directory: /tmp/pip-install-la5p0oyr
+2023-12-11T12:07:35,338 Collecting git+https://github.com/jaraco/path
+2023-12-11T12:07:35,338   Created temporary directory: /tmp/pip-req-build-9u63g138
+2023-12-11T12:07:35,338   Cloning https://github.com/jaraco/path to /tmp/pip-req-build-9u63g138
+2023-12-11T12:07:35,339   Running command git version
+2023-12-11T12:07:35,339   git version 2.34.1
+2023-12-11T12:07:35,340   Running command git clone --filter=blob:none --quiet https://github.com/jaraco/path /tmp/pip-req-build-9u63g138
+2023-12-11T12:07:36,427   Running command git rev-parse HEAD
+2023-12-11T12:07:36,428   eaafd29633bc4af79ff6745d1f61549da6262356
+2023-12-11T12:07:36,428   Resolved https://github.com/jaraco/path to commit eaafd29633bc4af79ff6745d1f61549da6262356
+2023-12-11T12:07:36,429   Added git+https://github.com/jaraco/path to build tracker '/tmp/pip-req-tracker-8y82dhyz'
+2023-12-11T12:07:36,429   Created temporary directory: /tmp/pip-build-env-didahl8m
+2023-12-11T12:07:36,430   Created temporary directory: /tmp/pip-standalone-pip-jnn166eh
+2023-12-11T12:07:36,478   Running command pip subprocess to install build dependencies
+2023-12-11T12:07:37,120   Using pip 22.0.2 from /tmp/pip-standalone-pip-jnn166eh/__env_pip__.zip/pip (python 3.10)
+2023-12-11T12:07:37,386   Collecting setuptools>=56
+2023-12-11T12:07:37,388     Using cached setuptools-69.0.2-py3-none-any.whl (819 kB)
+2023-12-11T12:07:37,425   Collecting setuptools_scm[toml]>=3.4.1
+2023-12-11T12:07:37,426     Using cached setuptools_scm-8.0.4-py3-none-any.whl (42 kB)
+2023-12-11T12:07:37,450   Collecting tomli>=1
+2023-12-11T12:07:37,451     Using cached tomli-2.0.1-py3-none-any.whl (12 kB)
+2023-12-11T12:07:37,470   Collecting typing-extensions
+2023-12-11T12:07:37,471     Using cached typing_extensions-4.9.0-py3-none-any.whl (32 kB)
+2023-12-11T12:07:37,493   Collecting packaging>=20
+2023-12-11T12:07:37,494     Using cached packaging-23.2-py3-none-any.whl (53 kB)
+2023-12-11T12:07:37,667   Installing collected packages: typing-extensions, tomli, setuptools, packaging, setuptools_scm
+2023-12-11T12:07:37,921   Successfully installed packaging-23.2 setuptools-69.0.2 setuptools_scm-8.0.4 tomli-2.0.1 typing-extensions-4.9.0
+2023-12-11T12:07:37,962   Running command Getting requirements to build wheel
+2023-12-11T12:07:38,063   /tmp/pip-build-env-didahl8m/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:07:38,063   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:07:38,063   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:07:38,063   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:07:38,063   Suggested workaround if applicable:
+2023-12-11T12:07:38,063    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:07:38,063      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:07:38,063      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:07:38,063     warnings.warn(
+2023-12-11T12:07:38,093   running egg_info
+2023-12-11T12:07:38,093   creating path.egg-info
+2023-12-11T12:07:38,094   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:07:38,105   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:07:38,117   Created temporary directory: /tmp/pip-standalone-pip-8w6p5oez
+2023-12-11T12:07:38,165   Running command pip subprocess to install backend dependencies
+2023-12-11T12:07:38,810   Using pip 22.0.2 from /tmp/pip-standalone-pip-8w6p5oez/__env_pip__.zip/pip (python 3.10)
+2023-12-11T12:07:38,981   Collecting wheel
+2023-12-11T12:07:38,982     Using cached wheel-0.42.0-py3-none-any.whl (65 kB)
+2023-12-11T12:07:39,108   Installing collected packages: wheel
+2023-12-11T12:07:39,126     Creating /tmp/pip-build-env-didahl8m/normal/local/bin
+2023-12-11T12:07:39,126     changing mode of /tmp/pip-build-env-didahl8m/normal/local/bin/wheel to 755
+2023-12-11T12:07:39,133   Successfully installed wheel-0.42.0
+2023-12-11T12:07:39,167   Created temporary directory: /tmp/pip-modern-metadata-_0wuw4ru
+2023-12-11T12:07:39,167   Running command Preparing metadata (pyproject.toml)
+2023-12-11T12:07:39,258   /tmp/pip-build-env-didahl8m/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:07:39,258   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:07:39,258   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:07:39,258   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:07:39,258   Suggested workaround if applicable:
+2023-12-11T12:07:39,258    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:07:39,258      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:07:39,258      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:07:39,259     warnings.warn(
+2023-12-11T12:07:39,287   running dist_info
+2023-12-11T12:07:39,289   creating /tmp/pip-modern-metadata-_0wuw4ru/path.egg-info
+2023-12-11T12:07:39,290   writing manifest file '/tmp/pip-modern-metadata-_0wuw4ru/path.egg-info/SOURCES.txt'
+2023-12-11T12:07:39,301   writing manifest file '/tmp/pip-modern-metadata-_0wuw4ru/path.egg-info/SOURCES.txt'
+2023-12-11T12:07:39,320   Source in /tmp/pip-req-build-9u63g138 has version 16.9.1.dev3+geaafd29, which satisfies requirement path==16.9.1.dev3+geaafd29 from git+https://github.com/jaraco/path
+2023-12-11T12:07:39,321   Removed path==16.9.1.dev3+geaafd29 from git+https://github.com/jaraco/path from build tracker '/tmp/pip-req-tracker-8y82dhyz'
+2023-12-11T12:07:39,328 Created temporary directory: /tmp/pip-unpack-6lqhmpae
+2023-12-11T12:07:39,328 Building wheels for collected packages: path
+2023-12-11T12:07:39,329   Created temporary directory: /tmp/pip-wheel-cn6ka29j
+2023-12-11T12:07:39,329   Destination directory: /tmp/pip-wheel-cn6ka29j
+2023-12-11T12:07:39,329   Running command Building wheel for path (pyproject.toml)
+2023-12-11T12:07:39,421   /tmp/pip-build-env-didahl8m/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:07:39,421   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:07:39,421   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:07:39,421   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:07:39,421   Suggested workaround if applicable:
+2023-12-11T12:07:39,421    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:07:39,421      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:07:39,421      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:07:39,421     warnings.warn(
+2023-12-11T12:07:39,451   running bdist_wheel
+2023-12-11T12:07:39,468   running build
+2023-12-11T12:07:39,468   running build_py
+2023-12-11T12:07:39,469   creating build
+2023-12-11T12:07:39,469   creating build/lib
+2023-12-11T12:07:39,469   creating build/lib/path
+2023-12-11T12:07:39,469   copying path/masks.py -> build/lib/path
+2023-12-11T12:07:39,469   copying path/matchers.py -> build/lib/path
+2023-12-11T12:07:39,469   copying path/classes.py -> build/lib/path
+2023-12-11T12:07:39,469   copying path/__init__.py -> build/lib/path
+2023-12-11T12:07:39,469   running egg_info
+2023-12-11T12:07:39,482   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:07:39,482   copying path/__init__.pyi -> build/lib/path
+2023-12-11T12:07:39,483   copying path/classes.pyi -> build/lib/path
+2023-12-11T12:07:39,483   copying path/masks.pyi -> build/lib/path
+2023-12-11T12:07:39,483   copying path/matchers.pyi -> build/lib/path
+2023-12-11T12:07:39,483   copying path/py.typed -> build/lib/path
+2023-12-11T12:07:39,483   running install
+2023-12-11T12:07:39,484   running install_lib
+2023-12-11T12:07:39,484   creating build/bdist.linux-x86_64
+2023-12-11T12:07:39,484   creating build/bdist.linux-x86_64/wheel
+2023-12-11T12:07:39,484   creating build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/__init__.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/matchers.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/classes.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/masks.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/matchers.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/classes.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/__init__.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/masks.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   copying build/lib/path/py.typed -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:07:39,484   running install_egg_info
+2023-12-11T12:07:39,485   Copying path.egg-info to build/bdist.linux-x86_64/wheel/path-16.9.1.dev3+geaafd29.egg-info
+2023-12-11T12:07:39,485   running install_scripts
+2023-12-11T12:07:39,514   Created wheel for path: filename=path-16.9.1.dev3+geaafd29-py3-none-any.whl size=25004 sha256=7ca55e7392ff183b8da71dfecacc6a12e5437600fc9fd2cb13698b6965fa1930
+2023-12-11T12:07:39,514   Stored in directory: /tmp/pip-ephem-wheel-cache-v8u8rvyx/wheels/50/15/7d/a5e9c9564f09a82270ad38c4a15db4a4483db2d3bfbb3b600d
+2023-12-11T12:07:39,515 Successfully built path
+2023-12-11T12:07:39,648 Installing collected packages: path
+2023-12-11T12:07:39,648   Running command git rev-parse HEAD
+2023-12-11T12:07:39,649   eaafd29633bc4af79ff6745d1f61549da6262356
+
+2023-12-11T12:07:39,665 Successfully installed path-16.9.1.dev3+geaafd29
+2023-12-11T12:07:39,667 Removed build tracker: '/tmp/pip-req-tracker-8y82dhyz'
+2023-12-11T12:11:51,070 Using pip 22.0.2 from /usr/lib/python3/dist-packages/pip (python 3.10)
+2023-12-11T12:11:51,070 Non-user install due to --prefix or --target option
+2023-12-11T12:11:51,070 Created temporary directory: /tmp/pip-target-zfpn4mkf
+2023-12-11T12:11:51,131 Created temporary directory: /tmp/pip-ephem-wheel-cache-avenuog2
+2023-12-11T12:11:51,131 Created temporary directory: /tmp/pip-req-tracker-zn836sxz
+2023-12-11T12:11:51,131 Initialized build tracking at /tmp/pip-req-tracker-zn836sxz
+2023-12-11T12:11:51,131 Created build tracker: /tmp/pip-req-tracker-zn836sxz
+2023-12-11T12:11:51,131 Entered build tracker: /tmp/pip-req-tracker-zn836sxz
+2023-12-11T12:11:51,131 Created temporary directory: /tmp/pip-install-s59uup52
+2023-12-11T12:11:51,136 Collecting git+https://github.com/jaraco/path
+2023-12-11T12:11:51,136   Created temporary directory: /tmp/pip-req-build-ryxiuxa7
+2023-12-11T12:11:51,136   Cloning https://github.com/jaraco/path to /tmp/pip-req-build-ryxiuxa7
+2023-12-11T12:11:51,136   Running command git version
+2023-12-11T12:11:51,137   git version 2.34.1
+2023-12-11T12:11:51,137   Running command git clone --filter=blob:none --quiet https://github.com/jaraco/path /tmp/pip-req-build-ryxiuxa7
+2023-12-11T12:11:52,161   Running command git rev-parse HEAD
+2023-12-11T12:11:52,162   eaafd29633bc4af79ff6745d1f61549da6262356
+2023-12-11T12:11:52,162   Resolved https://github.com/jaraco/path to commit eaafd29633bc4af79ff6745d1f61549da6262356
+2023-12-11T12:11:52,162   Added git+https://github.com/jaraco/path to build tracker '/tmp/pip-req-tracker-zn836sxz'
+2023-12-11T12:11:52,163   Created temporary directory: /tmp/pip-build-env-96s4nfs9
+2023-12-11T12:11:52,164   Created temporary directory: /tmp/pip-standalone-pip-ar8crfut
+2023-12-11T12:11:52,212   Running command pip subprocess to install build dependencies
+2023-12-11T12:11:52,848   Using pip 22.0.2 from /tmp/pip-standalone-pip-ar8crfut/__env_pip__.zip/pip (python 3.10)
+2023-12-11T12:11:53,111   Collecting setuptools>=56
+2023-12-11T12:11:53,112     Using cached setuptools-69.0.2-py3-none-any.whl (819 kB)
+2023-12-11T12:11:53,150   Collecting setuptools_scm[toml]>=3.4.1
+2023-12-11T12:11:53,151     Using cached setuptools_scm-8.0.4-py3-none-any.whl (42 kB)
+2023-12-11T12:11:53,174   Collecting tomli>=1
+2023-12-11T12:11:53,175     Using cached tomli-2.0.1-py3-none-any.whl (12 kB)
+2023-12-11T12:11:53,196   Collecting packaging>=20
+2023-12-11T12:11:53,197     Using cached packaging-23.2-py3-none-any.whl (53 kB)
+2023-12-11T12:11:53,217   Collecting typing-extensions
+2023-12-11T12:11:53,218     Using cached typing_extensions-4.9.0-py3-none-any.whl (32 kB)
+2023-12-11T12:11:53,384   Installing collected packages: typing-extensions, tomli, setuptools, packaging, setuptools_scm
+2023-12-11T12:11:53,643   Successfully installed packaging-23.2 setuptools-69.0.2 setuptools_scm-8.0.4 tomli-2.0.1 typing-extensions-4.9.0
+2023-12-11T12:11:53,684   Running command Getting requirements to build wheel
+2023-12-11T12:11:53,782   /tmp/pip-build-env-96s4nfs9/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:11:53,782   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:11:53,782   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:11:53,782   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:11:53,782   Suggested workaround if applicable:
+2023-12-11T12:11:53,782    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:11:53,782      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:11:53,782      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:11:53,782     warnings.warn(
+2023-12-11T12:11:53,811   running egg_info
+2023-12-11T12:11:53,811   creating path.egg-info
+2023-12-11T12:11:53,812   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:11:53,824   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:11:53,836   Created temporary directory: /tmp/pip-standalone-pip-3ste9pvq
+2023-12-11T12:11:53,884   Running command pip subprocess to install backend dependencies
+2023-12-11T12:11:54,518   Using pip 22.0.2 from /tmp/pip-standalone-pip-3ste9pvq/__env_pip__.zip/pip (python 3.10)
+2023-12-11T12:11:54,690   Collecting wheel
+2023-12-11T12:11:54,691     Using cached wheel-0.42.0-py3-none-any.whl (65 kB)
+2023-12-11T12:11:54,820   Installing collected packages: wheel
+2023-12-11T12:11:54,838     Creating /tmp/pip-build-env-96s4nfs9/normal/local/bin
+2023-12-11T12:11:54,838     changing mode of /tmp/pip-build-env-96s4nfs9/normal/local/bin/wheel to 755
+2023-12-11T12:11:54,845   Successfully installed wheel-0.42.0
+2023-12-11T12:11:54,879   Created temporary directory: /tmp/pip-modern-metadata-bj1y9e67
+2023-12-11T12:11:54,879   Running command Preparing metadata (pyproject.toml)
+2023-12-11T12:11:54,970   /tmp/pip-build-env-96s4nfs9/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:11:54,970   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:11:54,971   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:11:54,971   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:11:54,971   Suggested workaround if applicable:
+2023-12-11T12:11:54,971    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:11:54,971      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:11:54,971      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:11:54,971     warnings.warn(
+2023-12-11T12:11:54,999   running dist_info
+2023-12-11T12:11:55,000   creating /tmp/pip-modern-metadata-bj1y9e67/path.egg-info
+2023-12-11T12:11:55,001   writing manifest file '/tmp/pip-modern-metadata-bj1y9e67/path.egg-info/SOURCES.txt'
+2023-12-11T12:11:55,013   writing manifest file '/tmp/pip-modern-metadata-bj1y9e67/path.egg-info/SOURCES.txt'
+2023-12-11T12:11:55,033   Source in /tmp/pip-req-build-ryxiuxa7 has version 16.9.1.dev3+geaafd29, which satisfies requirement path==16.9.1.dev3+geaafd29 from git+https://github.com/jaraco/path
+2023-12-11T12:11:55,033   Removed path==16.9.1.dev3+geaafd29 from git+https://github.com/jaraco/path from build tracker '/tmp/pip-req-tracker-zn836sxz'
+2023-12-11T12:11:55,041 Created temporary directory: /tmp/pip-unpack-enm7r_2f
+2023-12-11T12:11:55,041 Building wheels for collected packages: path
+2023-12-11T12:11:55,041   Created temporary directory: /tmp/pip-wheel-nhbyd300
+2023-12-11T12:11:55,041   Destination directory: /tmp/pip-wheel-nhbyd300
+2023-12-11T12:11:55,042   Running command Building wheel for path (pyproject.toml)
+2023-12-11T12:11:55,134   /tmp/pip-build-env-96s4nfs9/overlay/local/lib/python3.10/dist-packages/setuptools_scm/_integration/setuptools.py:30: RuntimeWarning:
+2023-12-11T12:11:55,134   ERROR: setuptools==59.6.0 is used in combination with setuptools_scm>=8.x
+
+2023-12-11T12:11:55,134   Your build configuration is incomplete and previously worked by accident!
+2023-12-11T12:11:55,134   setuptools_scm requires setuptools>=61
+
+2023-12-11T12:11:55,134   Suggested workaround if applicable:
+2023-12-11T12:11:55,134    - migrating from the deprecated setup_requires mechanism to pep517/518
+2023-12-11T12:11:55,134      and using a pyproject.toml to declare build dependencies
+2023-12-11T12:11:55,134      which are reliably pre-installed before running the build tools
+
+2023-12-11T12:11:55,134     warnings.warn(
+2023-12-11T12:11:55,165   running bdist_wheel
+2023-12-11T12:11:55,182   running build
+2023-12-11T12:11:55,182   running build_py
+2023-12-11T12:11:55,182   creating build
+2023-12-11T12:11:55,183   creating build/lib
+2023-12-11T12:11:55,183   creating build/lib/path
+2023-12-11T12:11:55,183   copying path/masks.py -> build/lib/path
+2023-12-11T12:11:55,183   copying path/matchers.py -> build/lib/path
+2023-12-11T12:11:55,183   copying path/classes.py -> build/lib/path
+2023-12-11T12:11:55,183   copying path/__init__.py -> build/lib/path
+2023-12-11T12:11:55,183   running egg_info
+2023-12-11T12:11:55,196   writing manifest file 'path.egg-info/SOURCES.txt'
+2023-12-11T12:11:55,197   copying path/__init__.pyi -> build/lib/path
+2023-12-11T12:11:55,197   copying path/classes.pyi -> build/lib/path
+2023-12-11T12:11:55,197   copying path/masks.pyi -> build/lib/path
+2023-12-11T12:11:55,197   copying path/matchers.pyi -> build/lib/path
+2023-12-11T12:11:55,197   copying path/py.typed -> build/lib/path
+2023-12-11T12:11:55,197   running install
+2023-12-11T12:11:55,198   running install_lib
+2023-12-11T12:11:55,198   creating build/bdist.linux-x86_64
+2023-12-11T12:11:55,198   creating build/bdist.linux-x86_64/wheel
+2023-12-11T12:11:55,198   creating build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,198   copying build/lib/path/__init__.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,198   copying build/lib/path/matchers.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,198   copying build/lib/path/classes.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,198   copying build/lib/path/masks.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,198   copying build/lib/path/matchers.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,198   copying build/lib/path/classes.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,198   copying build/lib/path/__init__.py -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,198   copying build/lib/path/masks.pyi -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,199   copying build/lib/path/py.typed -> build/bdist.linux-x86_64/wheel/path
+2023-12-11T12:11:55,199   running install_egg_info
+2023-12-11T12:11:55,199   Copying path.egg-info to build/bdist.linux-x86_64/wheel/path-16.9.1.dev3+geaafd29.egg-info
+2023-12-11T12:11:55,199   running install_scripts
+2023-12-11T12:11:55,227   Created wheel for path: filename=path-16.9.1.dev3+geaafd29-py3-none-any.whl size=25004 sha256=aca3efa455c79db34ed7d7622267a26fb73c6f767acb9b14689458ed38f3c5c7
+2023-12-11T12:11:55,227   Stored in directory: /tmp/pip-ephem-wheel-cache-avenuog2/wheels/50/15/7d/a5e9c9564f09a82270ad38c4a15db4a4483db2d3bfbb3b600d
+2023-12-11T12:11:55,228 Successfully built path
+2023-12-11T12:11:55,358 Installing collected packages: path
+2023-12-11T12:11:55,359   Running command git rev-parse HEAD
+2023-12-11T12:11:55,360   eaafd29633bc4af79ff6745d1f61549da6262356
+
+2023-12-11T12:11:55,377 Successfully installed path-16.9.1.dev3+geaafd29
+2023-12-11T12:11:55,378 Removed build tracker: '/tmp/pip-req-tracker-zn836sxz'
