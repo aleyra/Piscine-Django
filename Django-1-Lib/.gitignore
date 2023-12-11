@@ -1,0 +1,7 @@
+.gitignore
+fr.subject.pdf
+ex01/local_lib
+ex01/log_file.log
+ex01/new_dir
+ex02/script.sh
+ex02/django_venv
