@@ -1,8 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-[remote "origin"]
-	url = git@vogsphere.42lyon.fr:vogsphere/intra-uuid-34322d34-00b5-42aa-afa3-9aa3e2a49bc0-5366098-lburnet
-	fetch = +refs/heads/*:refs/remotes/origin/*
