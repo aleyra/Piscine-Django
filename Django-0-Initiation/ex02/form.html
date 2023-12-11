@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Form for Piscine-Django</title>
+    </head>
+    <body>
+        <h2>HTML Form</h2>
+
+            <label for="firstname">Firstname :</label><br>
+            <input type="text" id="firstname" name="firstname" value="Lucille"><br>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="Burnet"><br>
+            <label for="age">Age :</label><br>
+            <input type="number" id="age" name="age" min="0" max="122"><br>
+            <label for="phone">Phone:</label><br>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="student">Student at 42 ?</label><br>
+            <input type="checkbox" id="student" name="student" value="Yes">
+            <p>Gender:</p>
+            <input type="radio" id="gender_male" name="gender" value="Male">
+            <label for="gender_male">Male</label><br>
+            <input type="radio" id="gender_female" name="gender" value="Female">
+            <label for="gender_female">Female</label><br>
+            <input type="radio" id="gender_other" name="gender" value="Other">
+            <label for="gender_other">Other</label><br>
+            <script src="popup.js"></script>
+            <button onclick="displayFormContents()">Submit</button>
+
+    </body>
+</html>
+
