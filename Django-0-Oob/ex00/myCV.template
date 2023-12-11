@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>CV pour la Piscine Django</title>
+        <style>
+            table, th, td {{
+              border: 2px solid blue;
+              border-collapse: collapse;
+            }}
+        </style>
+    </head>
+    <body>
+        <p>
+            <b>{name}</b>
+        </p>
+        <p>{age} ans<p>
+        <p>{profession}</p>
+        <h1>
+            CV pour la Piscine Django
+        </h1>
+        <h2>
+            Compétences
+        </h2>
+        <ul>
+            <li>Algorithmique, Techniques d'optimisation et IA</li>
+            <li>Pratique sur linux, Unix</li>
+            <li>Programmation impérative (C)</li>
+            <li>Programmation orientée objet (C++, Python)</li>
+            <li>Machine-learning (Python)</li>
+            <li>Réseau et administration système (Docker et VM avec Virtual Box)</li>
+            <li>Graphique et programmation en 2D (Programmation d'un mini Ray Tracer)</li>
+            <li>Web (React, TS, CSS)</li>
+            <li>Connaissance et pratique élémentaire du git</li>
+        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Langues</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>niveau</td>
+                </tr>
+                <tr>
+                    <td>{lang1}</td>
+                    <td>{niv_lang1}</td>
+                </tr>
+                <tr>
+                    <td>{lang2}</td>
+                    <td>{niv_lang2}</td>
+                </tr>
+                <tr>
+                    <td>{lang3}</td>
+                    <td>{niv_lang3}</td>
+                </tr>
+            </tbody>
+          </table>
+
+        <h2>
+            Parcours
+        </h2>
+        <h3>
+            Formation et Diplomes
+        </h3>
+        <ol reversed>
+            <li>
+                11/2020 à ce jour : En formation à l'école 42 Lyon Auvergne Rhône-Alpes.<br>
+                En préparation d'un titre RNCP niv. 7 (équivalent Master II) Expert en Architecture Informatique spécialisation Architecture des bases de données et data.
+            </li>
+            <li>2015 : Master II MEEF Mathématiques à l'ESPEE de Toulouse</li>
+            <li>2013 : Licence en MMESI à l'Université Paul Sabatier Toulouse III</li>
+        </ol>
+    </body>
+</html>

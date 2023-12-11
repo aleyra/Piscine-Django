@@ -1,0 +1,5 @@
+.gitignore
+fr.subject.pdf
+*/__pycache__
+ex00/myCV.html
+ex04/tests.py

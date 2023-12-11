@@ -1,0 +1,9 @@
+name = "Lucille Burnet"
+lang1 = "Anglais"
+lang2 = "Espagnol"
+lang3 = "Japonais"
+niv_lang1 = "B2"
+niv_lang2 = "B1"
+niv_lang3 = "A2"
+age = 34
+profession = "developper"
