@@ -26,6 +26,7 @@ def request_wikipedia(to_search):
         js = r.json()
         if len(js) == 0:
             raise Exception(f"Error: no results found for {to_search}")
+        to_search = js[1][0]
     except Exception as err:
         raise Exception(err)
     
