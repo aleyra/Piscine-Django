@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ex00'
+    'ex00',
+    'ex01',
+    'ex02',
+    'ex03'
 ]
 
 MIDDLEWARE = [
@@ -122,3 +125,30 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+HISTORY_LOG_FILE = f"{BASE_DIR}/ex02/history.log"
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'history_format': {
+            'format': '[{asctime}] {message}',
+            'style': '{',
+        }
+    },
+    'handlers': {
+        'history_handler': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': HISTORY_LOG_FILE,
+            'formatter': 'history_format',
+        },
+    },
+    'loggers': {
+        'ex02': {
+            'handlers': ['history_handler'],
+            'level': 'INFO'
+        }
+    }
+}
