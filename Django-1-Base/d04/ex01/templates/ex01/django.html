@@ -1,6 +1,9 @@
-{% extends 'ex01/base.html' %} {% block title %}
-<title>Ex01: Django, framework web.</title>
-{% endblock title %} {% block content %}
+{% extends 'ex01/base.html' %}
+{% block title %}
+<title>Ex01 : Processus d’affichage d’une page statique.</title>
+{% endblock title %}
+{% block content %}
+{% include 'ex01/nav.html' %} <!-- en vrai sur un autre projet faudrait le mettre dans base.html -->
 <div role="main" class="content">
   <h1>About the Django Software Foundation</h1>
   <p>
@@ -85,4 +88,4 @@
     <li>Žan Anderle</li>
   </ul>
 </div>
-{% endblock %}
+{% endblock content%}

@@ -1,6 +1,9 @@
-{% extends 'ex01/base.html' %} {% block title %}
-<title>Ex01: Display process of a static page.</title>
-{% endblock title %} {% block content %}
+{% extends 'ex01/base.html' %}
+{% block title %}
+<title>Ex01 : Processus d'affichage d'une page statique.</title>
+{% endblock title %}
+{% block content %}
+{% include 'ex01/nav.html' %} <!-- en vrai sur un autre projet faudrait le mettre dans base.html -->
 <div class="content">
   <table style="width: 90%">
     <tbody>
@@ -50,5 +53,4 @@
     </tbody>
   </table>
 </div>
-
 {% endblock content %}

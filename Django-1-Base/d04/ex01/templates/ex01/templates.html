@@ -1,12 +1,16 @@
-{% extends 'ex01/base.html' %} {% load static %} {% block title %}
-<title>Ex01: Template engine.</title>
-{% endblock title %} {% block style %}
+{% extends 'ex01/base.html' %}
+{% load static %} 
+{% block title %}
+<title>Ex01 : Moteur de template.</title>
+{% endblock title %}
+{% block style %}
 <link rel="stylesheet" type="text/css" href="{% static 'style2.css' %}" />
-{% endblock style %} {% block content %}
-
+{% endblock style %}
+{% block content %}
+{% include 'ex01/nav.html' %} <!-- en vrai sur un autre projet faudrait le mettre dans base.html -->
 <div class="content">
   <h1>Inheritance and Inclusion</h1>
-  {% verbatim %}
+  {% verbatim %} <!-- permet d'ignorer les {% %} a l'interieur -->
   <div class="trac-content">
     <h1>
       Template Tags Cheat Sheet<a
