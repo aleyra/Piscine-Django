@@ -17,9 +17,18 @@ params = {
 
 # Create your views here.
 def init(request):
+
+    match request.path:
+        case '/ex00/init/':
+            table_name = 'ex00_movies'
+        case '/ex02/init/':
+            table_name = 'ex02_movies'
+        case '/ex04/init/':
+            table_name = 'ex04_movies'
+
     commands = [
-        """
-        CREATE TABLE IF NOT EXISTS ex00_movies (
+        f"""
+        CREATE TABLE IF NOT EXISTS {table_name}(
             title VARCHAR(64) NOT NULL UNIQUE,
             episode_nb INTEGER PRIMARY KEY,
             opening_crawl TEXT,
@@ -29,6 +38,7 @@ def init(request):
         );
         """
     ]
+
     try:
         # connect to the PostgreSQL server
         conn = psycopg2.connect(**params)
@@ -45,6 +55,4 @@ def init(request):
     finally:
         if conn is not None:
             conn.close()
-
-
     return HttpResponse("OK")

@@ -1,3 +1,10 @@
 .gitignore
 fr.subject.pdf
 d05.tar.gz
+ENV_django
+*/__pycache__
+*/*/__pycache__
+*/*/*/__pycache__
+
+# parce que pas besoin de tout save, on lance `sh run.sh` dans d06 et pouf on a les bases qui se contruiront
+*/*/migrations/000*
