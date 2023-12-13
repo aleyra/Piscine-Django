@@ -1,34 +1,21 @@
 from django.http import HttpResponse
 import psycopg2
-from d06 import settings
+from d06.tools import ex_name, get_db_conn
 
 # https://www.postgresqltutorial.com/postgresql-python/create-tables/
 # https://www.psycopg.org/docs/module.html
 # https://www.postgresql.org/docs/16/ddl-constraints.html
 # https://www.postgresql.org/docs/16/datatype.html
 
-params = {
-    'dbname': settings.DATABASES['default']['NAME'],
-    'user': settings.DATABASES['default']['USER'],
-    'password': settings.DATABASES['default']['PASSWORD'],
-    'host': settings.DATABASES['default']['HOST'],
-    'port': settings.DATABASES['default']['PORT'],
-}
-
 # Create your views here.
 def init(request):
 
-    match request.path:
-        case '/ex00/init/':
-            table_name = 'ex00_movies'
-        case '/ex02/init/':
-            table_name = 'ex02_movies'
-        case '/ex04/init/':
-            table_name = 'ex04_movies'
+    ex_nb = ex_name(request)
+    print(ex_nb)
 
     commands = [
         f"""
-        CREATE TABLE IF NOT EXISTS {table_name}(
+        CREATE TABLE IF NOT EXISTS {ex_nb}_movies(
             title VARCHAR(64) NOT NULL UNIQUE,
             episode_nb INTEGER PRIMARY KEY,
             opening_crawl TEXT,
@@ -41,7 +28,7 @@ def init(request):
 
     try:
         # connect to the PostgreSQL server
-        conn = psycopg2.connect(**params)
+        conn = get_db_conn()
         cur = conn.cursor()
         # create table one by one
         for command in commands:

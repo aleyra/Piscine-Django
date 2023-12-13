@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from d06.tools import ex_name
 from ex02.views import movies
 from ex03.models import Movies
 
@@ -19,16 +20,11 @@ def populate(request):
     return HttpResponse(response)
 
 def display(request):
-    match request.path:
-        case '/ex02/display/':
-            ex_name = 'ex02'
-        case '/ex03/display/':
-            ex_name = 'ex03'
-        case '/ex04/display/':
-            ex_name = 'ex04'
+    ex_nb = ex_name(request)
+
     try:
         movies_lst = Movies.objects.all().values()
         # print(movies_lst)
     except Exception as err:
         return HttpResponse(f"No data available because: {err}")
-    return render(request, "{ex_name}/table.html", {'movies_lst': movies_lst})
+    return render(request, f"{ex_nb}/table.html", {'movies_lst': movies_lst})

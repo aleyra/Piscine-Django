@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import psycopg2
-from ex00.views import params
+from d06.tools import ex_name, get_db_conn
 
 # Create your views here.
 
@@ -62,22 +62,14 @@ movies = [
 ]
 
 def populate(request):
-
-    match request.path:
-        case '/ex02/populate/':
-            table_name = 'ex02_movies'
-        case '/ex04/populate/':
-            table_name = 'ex04_movies'
-
+    ex_nb = ex_name(request)
     try:
         # connect to the PostgreSQL server
-        conn = psycopg2.connect(**params)
+        conn = get_db_conn()
         cur = conn.cursor()
 
-        
-
         command = f"""
-            INSERT INTO {table_name}(
+            INSERT INTO {ex_nb}_movies(
                 episode_nb,
                 title,
                 director,
@@ -86,42 +78,41 @@ def populate(request):
             )
             VALUES (%s, %s, %s, %s, %s);
         """
+        response = ""
         for movie in movies:
-            cur.execute(command, (
+            try:
+                cur.execute(command, (
                 movie['episode_nb'],
                 movie['title'],
                 movie['director'],
                 movie['producer'],
                 movie['release_date']
-            ))
+                ))
+                conn.commit()
+                response += f"{movie['title']}: saved<br \>"
+            except (Exception, psycopg2.DatabaseError) as error:
+                conn.rollback()
+                response += f"{movie['title']}: {error}<br \>"
         # close communication with the PostgreSQL database server
         cur.close()
-        # commit the changes
-        conn.commit()
     except (Exception, psycopg2.DatabaseError) as error:
-        return HttpResponse(error)
+        return HttpResponse(response)
     finally:
         if conn is not None:
             conn.close()
-    return HttpResponse("OK")
+    return HttpResponse(response)
 
 def display(request):
-    match request.path:
-        case '/ex02/display/':
-            ex_name = 'ex02'
-        case '/ex04/display/':
-            ex_name = 'ex04'
-
-    command = f"SELECT * from {ex_name}_movies"
+    ex_nb = ex_name(request)
+    command = f"SELECT * from {ex_nb}_movies"
 
     try:
         # connect to the PostgreSQL server
-        conn = psycopg2.connect(**params)
+        conn = get_db_conn()
         cur = conn.cursor()
 
         cur.execute(command)
         data = cur.fetchall()
-        # print(data)
         # close communication with the PostgreSQL database server
         cur.close()
         # commit the changes
@@ -132,4 +123,4 @@ def display(request):
         if conn is not None:
             conn.close()
 
-    return render(request, f"{ex_name}/table.html", {'data': data})
+    return render(request, f"{ex_nb}/table.html", {'data': data})
