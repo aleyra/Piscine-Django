@@ -1,0 +1,16 @@
+<div>
+    <table>
+        <tr>
+            <th>Content</th>
+            <th>Autor</th>
+            <th>Date</th>
+        </tr>
+        {% for tip in tip_lst %}
+        <tr>
+            <td>{{tip.content}}</td>
+            <td>{{tip.autor}}</td>
+            <td>{{tip.date}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

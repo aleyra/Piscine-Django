@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
-from .forms import Name, Password, PasswordConfirmation
-from ex.models import User
+from .forms import Name, Password, PasswordConfirmation, Tip
+from ex.models import User, Tip
 from d06.settings import ANONIMOUS_ALIASES
 
 # # Create your views here.
@@ -37,15 +37,10 @@ def registration(request):
             if pwd == pwd_conf:
                 try:
                     if User.objects.filter(username=name).exists() or name in ANONIMOUS_ALIASES:
-                        # if name in ANONIMOUS_ALIASES:
-                        #     print_rouge("is an ANONIMOUS_ALIASES")
-                        # else:
-                        #     print_rouge("name exist")
                         message = f"{name} is not available, choose another one"
                         context.update({'message': message})
                         return render(request, "ex/registration.html", context)
                     else:
-                        # print_rouge("Let's create")
                         row = User(username=name, password=pwd)
                         row.save()
                         return HttpResponse(f"user {name} created")
@@ -62,7 +57,7 @@ def registration(request):
 def login(request):
     context = {
         'form_name': Name(),
-        'from_pwd': Password(),
+        'form_pwd': Password(),
         'message': "Please Log in"
     }
 
@@ -78,11 +73,11 @@ def login(request):
                 if User.objects.filter(username=name).exists():
                     print_rouge("ici")
                     row = User.objects.get(username=name)
-                    print(row)
                     if row.password != pwd:
                         message = f'Wrong password'
                         context.update({'message': message})
                         return render(request, "ex/login.html", context)
+                    print_rouge("pwd ok")
                     return render(request, "ex/login.html", context)
                 else:
                     message = f'Wrong username'
@@ -103,13 +98,9 @@ def display(request):
         return HttpResponse(f"No data available because: {err}")
     return render(request, f"ex/display.html", {'user_lst': user_lst})
 
-# from django.urls import reverse_lazy
-# from django.views.generic.edit import CreateView
 
-# from .forms import CustomUserCreationForm
-
-
-# class SignUpView(CreateView):
-#     form_class = CustomUserCreationForm
-#     success_url = reverse_lazy("/login")
-#     template_name = "account/registration.html"
+def tips(request):
+    context = {
+        'tip_lst': [],
+        'form_tip': Tip()
+    }

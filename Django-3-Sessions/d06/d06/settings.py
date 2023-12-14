@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-# from ex.models import CustomUser
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -158,8 +157,3 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 # # Durée de validité de la session (en secondes)
 SESSION_COOKIE_AGE = 42
-# SESSION_COOKIE_AGE = 3
-
-# AUTH_USER_MODEL = CustomUser
-# LOGIN_REDIRECT_URL = "index"
-# LOGOUT_REDIRECT_URL = "index"

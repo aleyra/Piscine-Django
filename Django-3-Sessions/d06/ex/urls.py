@@ -9,6 +9,4 @@ urlpatterns = [
     path("registration/", views.registration, name="registration"),
     path("login/", views.login, name="login"),
     path("display/", views.display, name="display"),
-    # path("registration/", SignUpView.as_view(), name="registration"),
-    # path("login/", SignUpView.as_view(), name="login"),
 ]

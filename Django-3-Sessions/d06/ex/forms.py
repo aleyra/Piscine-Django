@@ -1,4 +1,6 @@
 from django import forms
+from django.forms import ModelForm
+from ex.models import Tip
 
 
 class Name(forms.Form):
@@ -11,3 +13,11 @@ class Password(forms.Form):
 
 class PasswordConfirmation(forms.Form):
     password_confirmation = forms.CharField(label="Password confirmation")
+
+
+# Create the form class.
+# https://docs.djangoproject.com/fr/4.2/topics/forms/modelforms/
+class Tip(ModelForm):
+    class Meta:
+        model = Tip
+        fields = ["content", "autor", "date"]
