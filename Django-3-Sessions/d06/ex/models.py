@@ -19,3 +19,17 @@ class Tip(models.Model):
     content = models.TextField()
     author = models.CharField(max_length=64)
     date = models.DateField(default=date.today())
+    upvote = models.IntegerField(default=0)
+    downvote = models.IntegerField(default=0)
+
+
+class Votes(models.Model):
+    VOTE = (
+        (-1, 'Down vote'),
+        (1, 'Up vote'),
+    )
+    class Meta:
+        db_table = 'votes'
+    username = models.CharField(max_length=64)
+    tip_id = models.IntegerField()
+    vote = models.IntegerField(choices=VOTE)

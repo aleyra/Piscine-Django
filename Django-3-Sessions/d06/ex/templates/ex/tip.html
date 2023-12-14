@@ -4,7 +4,7 @@
     <form action="" method="post">
         {% csrf_token %}  <!-- security -->
         {{ form_tip.as_p }} <!-- comme un string.format -->
-        <input type="submit" value="OK">
+        <input type="submit" value="Post">
     </form>
     {% if tip_lst %} <!-- and user is logged -->
     <table>
@@ -12,12 +12,18 @@
             <th>Content</th>
             <th>Author</th>
             <th>Date</th>
+            <th></th>
+            <th>Up votes</th>
+            <th>Down votes</th>
         </tr>
         {% for tip in tip_lst %}
         <tr>
             <td>{{tip.content}}</td>
             <td>{{tip.author}}</td>
             <td>{{tip.date}}</td>
+            <td><input type="submit" value="Delete"></td>
+            <td>{{tip.upvote}}<input type="submit" value="upvote"></td>
+            <td>{{tip.downvote}}<input type="submit" value="downvote"></td>
         </tr>
         {% endfor %}
     </table>
