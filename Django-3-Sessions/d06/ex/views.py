@@ -91,7 +91,6 @@ def login(request):
 
 
 def display(request):
-
     try:
         user_lst = User.objects.all().values()
     except Exception as err:
@@ -102,5 +101,22 @@ def display(request):
 def tips(request):
     context = {
         'tip_lst': [],
-        'form_tip': Tip()
+        'form_tip': Tip(),
+        'message': "List of Tips",
     }
+
+    try:
+        tip_lst = Tip.objects.all().values()
+    except Exception as err:
+        message = f"No data available because: {err}"
+        context.update({'message': message})
+
+    if request.method == "POST":
+        tip = Tip(request.POST)
+
+        if tip.is_valid():
+            tip = tip.cleaned_data()
+            print(tip)
+        
+    
+    return render(request, "ex/index.html", context)

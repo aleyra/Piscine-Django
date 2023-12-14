@@ -1,4 +1,11 @@
 <div>
+    <p>{{ message }}</p>
+    <form action="" method="post">
+        {% csrf_token %}  <!-- security -->
+        {{ form_tip.as_p }} <!-- comme un string.format -->
+        <input type="submit" value="OK">
+    </form>
+    {% if tip_lst %}
     <table>
         <tr>
             <th>Content</th>
@@ -13,4 +20,5 @@
         </tr>
         {% endfor %}
     </table>
+    {% endif %}
 </div>
