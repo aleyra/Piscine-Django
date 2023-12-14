@@ -1,21 +1,22 @@
 <div>
+    <p>Bouh</p>
     <p>{{ message }}</p>
     <form action="" method="post">
         {% csrf_token %}  <!-- security -->
         {{ form_tip.as_p }} <!-- comme un string.format -->
         <input type="submit" value="OK">
     </form>
-    {% if tip_lst %}
+    {% if tip_lst %} <!-- and user is logged -->
     <table>
         <tr>
             <th>Content</th>
-            <th>Autor</th>
+            <th>Author</th>
             <th>Date</th>
         </tr>
         {% for tip in tip_lst %}
         <tr>
             <td>{{tip.content}}</td>
-            <td>{{tip.autor}}</td>
+            <td>{{tip.author}}</td>
             <td>{{tip.date}}</td>
         </tr>
         {% endfor %}

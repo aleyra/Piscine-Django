@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
-from .forms import Name, Password, PasswordConfirmation, Tip
+from .forms import Name, Password, PasswordConfirmation, TipForm
 from ex.models import User, Tip
 from d06.settings import ANONIMOUS_ALIASES
 
@@ -100,23 +100,29 @@ def display(request):
 
 def tips(request):
     context = {
+        'alias': request.session['name'],
         'tip_lst': [],
-        'form_tip': Tip(),
+        'form_tip': TipForm(),
         'message': "List of Tips",
     }
 
     try:
         tip_lst = Tip.objects.all().values()
+        context.update({'tip_lst': tip_lst})
     except Exception as err:
         message = f"No data available because: {err}"
         context.update({'message': message})
 
+    # if user is logged
     if request.method == "POST":
-        tip = Tip(request.POST)
-
+        tip = TipForm(request.POST)
         if tip.is_valid():
-            tip = tip.cleaned_data()
-            print(tip)
+            tip = tip.cleaned_data
+            row = Tip(**tip)
+            row.save()
+            message = f"tip : {tip['content']} by {tip['author']} at {tip['date']} saved"
+            context.update({'message': message})
+            return render(request, "ex/index.html", context)
         
     
     return render(request, "ex/index.html", context)

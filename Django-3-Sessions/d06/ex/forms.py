@@ -17,7 +17,7 @@ class PasswordConfirmation(forms.Form):
 
 # Create the form class.
 # https://docs.djangoproject.com/fr/4.2/topics/forms/modelforms/
-class Tip(ModelForm):
+class TipForm(ModelForm):
     class Meta:
         model = Tip
         fields = ["content", "author", "date"]
