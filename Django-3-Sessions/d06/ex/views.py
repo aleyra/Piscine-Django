@@ -2,51 +2,70 @@ from django.shortcuts import render
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth import authenticate, get_user_model
-from .forms import Name, Password, PasswordConfirmation, TipForm
+from django.contrib.auth import authenticate, get_user_model, logout, login
+from .forms import TipForm
+# from .forms import RegisterForm
+from .forms import Name, Password, PasswordConfirmation
 from ex.models import Tip
 from d06.settings import ANONIMOUS_ALIASES
 
 User = get_user_model()
+
+context = {
+    'form_name': Name(),
+    'form_pwd': Password(),
+    'form_pwd_conf': PasswordConfirmation(),
+    'alias': '',
+    'tip_lst': [],
+    'form_tip': TipForm(),
+    'message': ""
+}
 
 # # Create your views here.
 
 def print_rouge(s):
     print("\033[91m" + s + "\033[00m")
 
-def index(request):
-    context = {'alias': request.session['name']}
-    return render(request, "ex/index.html", context)
-
-
-def registration(request):
+def home(request):
+    print_rouge('--home--')
+    print(request)
     context = {
-        'form_name': Name(),
-        'from_pwd': Password(),
-        'form_pwd_conf': PasswordConfirmation(),
-        'message': "Choose a username and a password"
-    }
+        'request': request,
+        'alias': request.session['name'],
+        }
+    return render(request, "ex/home.html", context)
+
+
+def register(request):
+    context.update({'message': "Choose a username and a password"})
 
     if 'is_authenticated' in request.session.keys() and request.session['is_authenticated'] == "True":
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('home'))
 
     if request.method == "POST":
         name = Name(request.POST)
         pwd = Password(request.POST)
         pwd_conf = PasswordConfirmation(request.POST)
+        # register = RegisterForm(request.POST)
         if (
             name.is_valid() and pwd.is_valid() and pwd_conf.is_valid()
+            # register.is_valid()
         ):
             name = name.cleaned_data['name']
             pwd = pwd.cleaned_data['password']
             pwd_conf = pwd_conf.cleaned_data['password_confirmation']
+            # register = register.cleaned_data
             
             if pwd == pwd_conf:
+            # if register['password'] == register['password_confirm']:
                 # try:
-                if User.objects.filter(username=name).exists() or name in ANONIMOUS_ALIASES:
+                if (
+                    User.objects.filter(username=name).exists()
+                    or name in ANONIMOUS_ALIASES
+                ):
                     message = f"{name} is not available, choose another one"
                     context.update({'message': message})
-                    return render(request, "ex/registration.html", context)
+                    return render(request, "ex/register.html", context)
                 else:
                     row = User(username=name)
                     row.set_password(pwd)
@@ -55,21 +74,19 @@ def registration(request):
                 # except Exception as err:
                 #     message = f'Error: {err}'
                 #     context.update({'message': message})
-                #     return render(request, "ex/registration.html", context)
+                #     return render(request, "ex/register.html", context)
             else:
                 message = "You haven't enter the same password for confirmation"
                 context.update ({'message': message})
-                return render(request, "ex/registration.html", context)
-    return render(request, "ex/registration.html", context)
+                return render(request, "ex/register.html", context)
+    return render(request, "ex/register.html", context)
+
 
 def login(request):
-    context = {
-        'form_name': Name(),
-        'form_pwd': Password(),
-        'message': "Please Log in"
-    }
+    context.update({'message': "Please Log in"})
+    
     if request.user.is_authenticated == True:
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('home'))
     if request.method == "POST":
         name = Name(request.POST)
         pwd = Password(request.POST)
@@ -81,9 +98,11 @@ def login(request):
             print_rouge(f"{name} {pwd}")
             user = authenticate(username=name, password=pwd)
             if user is not None:
+                login(request, user)
+                print(user)
                 print_rouge("2e ok")
-                request.session['name'] = name
-                return HttpResponse(f"user {name} connected")
+                # request.session['name'] = name
+                return HttpResponseRedirect(reverse('home'))
             else:
                 print_rouge("2e nok")
                 message = f'Wrong password or username'
@@ -114,33 +133,13 @@ def login(request):
     return render(request, "ex/login.html", context)
 
 
-def logout(request):
-    request.session.flush()
-    # request.user.is_authenticated == False
-    return HttpResponseRedirect(reverse('index'))
-
-
-def display(request):
-    try:
-        user_lst = User.objects.all().values()
-    except Exception as err:
-        return HttpResponse(f"No data available because: {err}")
-    return render(request, f"ex/display.html", {'user_lst': user_lst})
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))
 
 
 def tips(request):
-    context = {
-        'alias': request.session['name'],
-        'tip_lst': [],
-        'form_tip': TipForm(),
-        'message': "List of Tips",
-        # 'is_authenticated': 'False'
-    }
-
-    # if (
-    #     request.user.is_authenticated == True
-    # ):
-    #     context.update({'is_authenticated': 'True'})
+    context.update({'message': "List of Tips", 'alias': request.session['name']})
 
     try:
         tip_lst = Tip.objects.all().values()
@@ -148,17 +147,21 @@ def tips(request):
     except Exception as err:
         message = f"No data available because: {err}"
         context.update({'message': message})
-        return render(request, "ex/index.html", context)
+        return render(request, "ex/home.html", context)
     if request.method == "POST":
         tip = TipForm(request.POST)
         if tip.is_valid():
             tip = tip.cleaned_data
             row = Tip(**tip)
-            row.author = request.session['name']
+            row.author = 'anonymous'
+            # row.author = request.session['name']
             row.save()
-            message = f"tip : {tip['content']} by {tip['author']} at {tip['date']} saved"
+            message = f"tip : {tip['content']} saved"
             context.update({'message': message})
-            return render(request, "ex/index.html", context)
-        
+            return render(request, "ex/home.html", context)
+        else:
+            message = "Try again"
+            context.update({'message': message})
+            return render(request, "ex/home.html", context)
     
-    return render(request, "ex/index.html", context)
+    return render(request, "ex/home.html", context)

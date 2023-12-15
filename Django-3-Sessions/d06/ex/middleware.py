@@ -11,4 +11,4 @@ class AnonymousSession42secMiddleware:
                 request.session['name'] = random_alias()
 
         response = self.get_response(request)
-        return response
+        return response 

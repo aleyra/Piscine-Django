@@ -1,12 +1,25 @@
-{% load static %}
-<div>
-    <h1>nav bar</h1>
-    <a href="/">home</a>
-    {% if is_authenticated %}
-    <a href="/logout">log out</a>
-    {% else %}
-    <a href="/registration">registration</a>
-    <a href="/login">log in</a>
-    {% endif %}
-    <a href="/display">display User table</a> <!-- To delete -->
-</div>
+ <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="/">Hello {{alias}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="">Home</a>
+          </li>
+          {% if request.user%}
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="register">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
