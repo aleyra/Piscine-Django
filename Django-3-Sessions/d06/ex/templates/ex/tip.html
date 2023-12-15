@@ -18,27 +18,21 @@
         </tr>
         {% for tip in tip_lst %}
         <tr>
-            <td>{{tip.content}}</td>
-            <td>{{tip.author}}</td>
-            <td><input type="submit" value="Delete"></td>
-            <td>
-                {{tip.upvote}}<input type="submit" value="upvote">
-            </td>
-            <td>
-                {{tip.downvote}}<input type="submit" value="downvote">
-            </td>
+            <form method="post" action="{% url 'tip_action' %}">
+                {% csrf_token %}
+                <input type="hidden" name="tip_id" value="{{ tip.id }}">
+                <td>{{tip.content}}</td>
+                <td>{{tip.author}}</td>
+                <td><input type="submit" name="delete" value="Delete"></td>
+                <td>
+                    {{tip.upvote}}<input type="submit" name="upvote" value="upvote">
+                </td>
+                <td>
+                    {{tip.downvote}}<input type="submit" name="downvote" value="downvote">
+                </td>
+            </form>
         </tr>
         {% endfor %}
     </table>
     {% endif %}
 </div>
-
-
-
-<!-- <form method="post" action="{% url 'handle_tip_action' %}">
-    {% csrf_token %}
-    <input type="hidden" name="tip_id" value="{{ tip.id }}">
-    <button type="submit" name="upvote">Upvote</button>
-    <button type="submit" name="downvote">Downvote</button>
-    <button type="submit" name="delete">Delete</button>
-</form> -->

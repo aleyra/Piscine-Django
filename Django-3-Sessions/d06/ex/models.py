@@ -11,7 +11,7 @@ class Tip(models.Model):
     downvote = models.IntegerField(default=0)
 
 
-class Votes(models.Model):
+class Vote(models.Model):
     VOTE = (
         (-1, 'Down vote'),
         (1, 'Up vote'),

@@ -3,10 +3,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, get_user_model, logout, login
-from .forms import TipForm
+from .forms import TipForm, TipActionForm
 # from .forms import RegisterForm
 from .forms import Name, Password, PasswordConfirmation
-from ex.models import Tip
+from ex.models import Tip, Vote
 from d06.settings import ANONIMOUS_ALIASES
 
 User = get_user_model()
@@ -165,3 +165,55 @@ def tips(request):
             return render(request, "ex/home.html", context)
     
     return render(request, "ex/home.html", context)
+
+
+def vote(tip: Tip, user: User, which_one):
+    if Vote.objects.filter(username=user.username, tip_id=tip.id).exists():
+        vote = Vote.objects.get(username=user.username, tip_id=tip.id)
+        if vote.vote == -1:
+            tip.downvote -= 1
+            if which_one == 'up':
+                tip.upvote += 1
+                vote.vote = 1
+            else:
+                vote.delete()
+        if vote.vote == 1:
+            tip.upvote -= 1
+            if which_one == 'down':
+                tip.downvote += 1
+                vote.vote = -1
+            else:
+                vote.delete()
+    else:
+        print("bouh")
+
+
+
+def tip_action(request):
+    tip = None
+    user = None
+    if request.method == 'POST':
+        form = TipActionForm(request.POST)
+        if form.is_valid():
+            tip_id = form.cleaned_data['id']
+  
+            try: 
+                tip = Tip.objects.get(id=tip_id)
+                user = User.objects.get(name=request.session['name'])
+                if tip is None or user is None:
+                    raise Exception("Tip or User is None")
+            except Exception as e:
+                context.update({'message': f"ERROR : {e}"})
+                return HttpResponseRedirect(reverse('home'))
+            print_rouge(f"tip = {tip}")
+            if 'upvote' in request.POST:
+                print_rouge(f"UPVOTE TIP {tip_id}")
+                vote(tip, user, 'up')
+            elif 'downvote' in request.POST:
+                print(f"DOWNVOTE TIP {tip_id}")
+                vote(tip, user, 'down')
+            elif 'delete' in request.POST:
+                print(f"DELETE TIP {tip_id}")
+                delete_tip(tip)
+
+    return HttpResponseRedirect(reverse('home'))

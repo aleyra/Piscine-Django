@@ -20,3 +20,8 @@ class TipForm(ModelForm):
     class Meta:
         model = Tip
         fields = ["content"]
+
+class TipActionForm(ModelForm):
+    class Meta:
+        model = Tip
+        fields = ["id"]
