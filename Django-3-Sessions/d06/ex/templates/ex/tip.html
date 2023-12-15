@@ -1,38 +1,57 @@
 <div>
     <p>{{ message }}</p>
-    <p>Bouh</p>
+    {% if user.is_authenticated %}
     <form action="" method="post">
         {% csrf_token %}  <!-- security -->
         {{ form_tip.as_p }} <!-- comme un string.format -->
         <input type="submit" value="Post">
     </form>
+    {% endif %}
     {% if tip_lst %} <!-- and user is logged -->
     <table>
         <tr>
             <th>Content</th>
             <th>Author</th>
             <th>Date</th>
+            {% if user.is_authenticated %}
             <th></th>
+            {% endif %}
             <th>Up votes</th>
             <th>Down votes</th>
         </tr>
         {% for tip in tip_lst %}
         <tr>
+            {% if user.is_authenticated %}
             <form method="post" action="{% url 'tip_action' %}">
+            {% endif %}
                 {% csrf_token %}
                 <input type="hidden" name="tip_id" value="{{ tip.id }}">
                 <td>{{tip.content}}</td>
                 <td>{{tip.author}}</td>
-                <td><input type="submit" name="delete" value="Delete"></td>
+                <td>{{tip.date}}</td>
+                {% if user.is_authenticated %}
                 <td>
-                    {{tip.upvote}}<input type="submit" name="upvote" value="upvote">
+                    <input type="submit" name="delete" value="Delete">
+                </td>
+                {% endif %}
+                <td>
+                    {{tip.upvote}}
+                    {% if user.is_authenticated %}
+                    <input type="submit" name="upvote" value="upvote">
+                    {% endif %}
                 </td>
                 <td>
-                    {{tip.downvote}}<input type="submit" name="downvote" value="downvote">
+                    {{tip.downvote}}
+                    {% if user.is_authenticated %}
+                    <input type="submit" name="downvote" value="downvote">
+                    {% endif %}
                 </td>
+            {% if user.is_authenticated %}
             </form>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>
     {% endif %}
 </div>
+

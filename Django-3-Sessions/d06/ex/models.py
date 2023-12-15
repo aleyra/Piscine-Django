@@ -20,4 +20,4 @@ class Vote(models.Model):
         db_table = 'votes'
     username = models.CharField(max_length=64)
     tip_id = models.IntegerField()
-    vote = models.IntegerField(choices=VOTE)
+    vote = models.IntegerField()

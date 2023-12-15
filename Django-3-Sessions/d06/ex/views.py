@@ -15,9 +15,10 @@ context = {
     'form_name': Name(),
     'form_pwd': Password(),
     'form_pwd_conf': PasswordConfirmation(),
+    'form_tip': TipForm(),
+    'form_tipaction': TipActionForm(),
     'alias': '',
     'tip_lst': [],
-    'form_tip': TipForm(),
     'message': ""
 }
 
@@ -27,8 +28,6 @@ def print_rouge(s):
     print("\033[91m" + s + "\033[00m")
 
 def home(request):
-    print_rouge('--home--')
-    print(request)
     context = {
         'request': request,
         'alias': request.session['name'],
@@ -70,7 +69,7 @@ def register(request):
                     row = User(username=name)
                     row.set_password(pwd)
                     row.save()
-                    return HttpResponse(f"user {name} created")
+                    return HttpResponseRedirect(reverse('home'))
                 # except Exception as err:
                 #     message = f'Error: {err}'
                 #     context.update({'message': message})
@@ -82,7 +81,7 @@ def register(request):
     return render(request, "ex/register.html", context)
 
 
-def login(request):
+def login_view(request):
     context.update({'message': "Please Log in"})
     
     if request.user.is_authenticated == True:
@@ -92,44 +91,16 @@ def login(request):
         pwd = Password(request.POST)
         
         if name.is_valid() and pwd.is_valid():
-            print_rouge("1e ok")
             name = name.cleaned_data['name']
             pwd = pwd.cleaned_data['password']
-            print_rouge(f"{name} {pwd}")
             user = authenticate(username=name, password=pwd)
             if user is not None:
                 login(request, user)
-                print(user)
-                print_rouge("2e ok")
-                # request.session['name'] = name
                 return HttpResponseRedirect(reverse('home'))
             else:
-                print_rouge("2e nok")
                 message = f'Wrong password or username'
                 context.update({'message': message})
                 return render(request, "ex/login.html", context)
-    #         print_rouge(f"{name}\n{pwd}")
-    #         try:
-    #             if User.objects.filter(username=name).exists():
-    #                 print_rouge("ici")
-    #                 row = User.objects.get(username=name)
-    #                 if row.password != pwd:
-    #                     message = f'Wrong password'
-    #                     context.update({'message': message})
-    #                     return render(request, "ex/login.html", context)
-    #                 print_rouge("pwd ok")
-    #                 print(dir(request.user))
-    #                 request.user.is_authenticated = True
-    #                 request.session['name'] = row.username
-    #                 return render(request, "ex/login.html", context)
-    #             else:
-    #                 message = f'Wrong username'
-    #                 context.update({'message': message})
-    #                 return render(request, "ex/login.html", context)
-    #         except Exception as err:
-    #             message = f'Error: {err}'
-    #             context.update({'message': message})
-    #             return render(request, "ex/login.html", context)
     return render(request, "ex/login.html", context)
 
 
@@ -153,7 +124,7 @@ def tips(request):
         if tip.is_valid():
             tip = tip.cleaned_data
             row = Tip(**tip)
-            row.author = 'anonymous'
+            row.author = request.user.username
             # row.author = request.session['name']
             row.save()
             message = f"tip : {tip['content']} saved"
@@ -168,25 +139,46 @@ def tips(request):
 
 
 def vote(tip: Tip, user: User, which_one):
-    if Vote.objects.filter(username=user.username, tip_id=tip.id).exists():
-        vote = Vote.objects.get(username=user.username, tip_id=tip.id)
-        if vote.vote == -1:
-            tip.downvote -= 1
-            if which_one == 'up':
-                tip.upvote += 1
-                vote.vote = 1
-            else:
-                vote.delete()
-        if vote.vote == 1:
-            tip.upvote -= 1
-            if which_one == 'down':
-                tip.downvote += 1
-                vote.vote = -1
-            else:
-                vote.delete()
-    else:
-        print("bouh")
+    try:
+        if Vote.objects.filter(username=user.username, tip_id=tip.id).exists():
+            vote = Vote.objects.get(username=user.username, tip_id=tip.id)
+            if vote.vote == -1:
+                tip.downvote = tip.downvote - 1
+                if which_one == 'up':
+                    tip.upvote = tip.upvote + 1
+                    vote.vote = 1
+                    vote.save()
+                else:
+                    vote.delete()
+            elif vote.vote == 1:
+                tip.upvote = tip.upvote - 1
+                if which_one == 'down':
+                    tip.downvote = tip.downvote + 1
+                    vote.vote = -1
+                    vote.save()
+                else:
+                    vote.delete()
+        elif which_one == 'up':
+            vote = Vote(username=user.username, tip_id=tip.id, vote=1)
+            tip.upvote = tip.upvote + 1
+            vote.save()
+        else:
+            vote = Vote(username=user.username, tip_id=tip.id, vote=-1)
+            tip.downvote = tip.downvote + 1
+            vote.save()
+        tip.save()
+        context.update({'message': f'{which_one}vote saved'})
+    except Exception as err:
+        context.update({'message': f"Error: {err}"})
 
+
+def delete_tip(tip: Tip):
+    try:
+        Vote.objects.filter(tip_id=tip.id).delete()
+        tip.delete()
+        context.update({'message': f'Tip deleted'})
+    except Exception as err:
+        context.update({'message': f"Error: {err}"})
 
 
 def tip_action(request):
@@ -195,25 +187,21 @@ def tip_action(request):
     if request.method == 'POST':
         form = TipActionForm(request.POST)
         if form.is_valid():
-            tip_id = form.cleaned_data['id']
+            tip_id = form.cleaned_data['tip_id']
   
             try: 
                 tip = Tip.objects.get(id=tip_id)
-                user = User.objects.get(name=request.session['name'])
+                user = User.objects.get(username=request.user.username)
                 if tip is None or user is None:
                     raise Exception("Tip or User is None")
             except Exception as e:
                 context.update({'message': f"ERROR : {e}"})
                 return HttpResponseRedirect(reverse('home'))
-            print_rouge(f"tip = {tip}")
             if 'upvote' in request.POST:
-                print_rouge(f"UPVOTE TIP {tip_id}")
                 vote(tip, user, 'up')
             elif 'downvote' in request.POST:
-                print(f"DOWNVOTE TIP {tip_id}")
                 vote(tip, user, 'down')
             elif 'delete' in request.POST:
-                print(f"DELETE TIP {tip_id}")
                 delete_tip(tip)
 
     return HttpResponseRedirect(reverse('home'))

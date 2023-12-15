@@ -159,3 +159,4 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 # # Durée de validité de la session (en secondes)
 SESSION_COOKIE_AGE = 42
+# SESSION_COOKIE_AGE = 3000

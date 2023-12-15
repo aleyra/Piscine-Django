@@ -21,7 +21,5 @@ class TipForm(ModelForm):
         model = Tip
         fields = ["content"]
 
-class TipActionForm(ModelForm):
-    class Meta:
-        model = Tip
-        fields = ["id"]
+class TipActionForm(forms.Form):
+    tip_id = forms.IntegerField(widget=forms.HiddenInput())
