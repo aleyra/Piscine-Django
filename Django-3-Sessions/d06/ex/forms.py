@@ -20,4 +20,4 @@ class PasswordConfirmation(forms.Form):
 class TipForm(ModelForm):
     class Meta:
         model = Tip
-        fields = ["content", "author", "date"]
+        fields = ["content"]

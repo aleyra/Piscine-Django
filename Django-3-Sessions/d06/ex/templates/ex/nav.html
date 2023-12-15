@@ -2,7 +2,11 @@
 <div>
     <h1>nav bar</h1>
     <a href="/">home</a>
+    {% if is_authenticated %}
+    <a href="/logout">log out</a>
+    {% else %}
     <a href="/registration">registration</a>
     <a href="/login">log in</a>
+    {% endif %}
     <a href="/display">display User table</a> <!-- To delete -->
 </div>

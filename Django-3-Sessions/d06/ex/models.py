@@ -1,16 +1,11 @@
 from django.db import models
-from datetime import date
+from django.contrib.auth.models import AbstractUser
+from django.utils.timezone import now
 
 # Create your models here.
 
-class User(models.Model):
-    class Meta:
-        db_table = 'user'
-    username = models.CharField(max_length=64, unique=True, primary_key=True)
-    password = models.CharField(max_length=64)
-
-    def __str__(self) -> str:
-        return self.username
+# class User(AbstractUser):
+#     pass
 
 
 class Tip(models.Model):
@@ -18,7 +13,7 @@ class Tip(models.Model):
         db_table = 'tip'
     content = models.TextField()
     author = models.CharField(max_length=64)
-    date = models.DateField(default=date.today())
+    date = models.DateTimeField(auto_now_add=True)
     upvote = models.IntegerField(default=0)
     downvote = models.IntegerField(default=0)
 

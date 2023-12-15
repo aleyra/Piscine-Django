@@ -1,18 +1,22 @@
 <div>
     <p>Bouh</p>
     <p>{{ message }}</p>
+    {% if is_authenticated == True %}
     <form action="" method="post">
         {% csrf_token %}  <!-- security -->
         {{ form_tip.as_p }} <!-- comme un string.format -->
         <input type="submit" value="Post">
     </form>
+    {% endif %}
     {% if tip_lst %} <!-- and user is logged -->
     <table>
         <tr>
             <th>Content</th>
             <th>Author</th>
             <th>Date</th>
+            {% if is_authenticated%}
             <th></th>
+            {% endif %}
             <th>Up votes</th>
             <th>Down votes</th>
         </tr>
@@ -21,9 +25,11 @@
             <td>{{tip.content}}</td>
             <td>{{tip.author}}</td>
             <td>{{tip.date}}</td>
+            {% if is_authenticated%}
             <td><input type="submit" value="Delete"></td>
-            <td>{{tip.upvote}}<input type="submit" value="upvote"></td>
-            <td>{{tip.downvote}}<input type="submit" value="downvote"></td>
+            {% endif %}
+            <td>{{tip.upvote}}{% if is_authenticated%}<input type="submit" value="upvote"></td>{% endif %}
+            <td>{{tip.downvote}}{% if is_authenticated%}<input type="submit" value="downvote"></td>{% endif %}
         </tr>
         {% endfor %}
     </table>
