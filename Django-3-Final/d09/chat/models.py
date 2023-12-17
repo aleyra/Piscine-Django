@@ -1,22 +1,22 @@
 from django.db import models
+
+# Create your models here.
+#chat/models.py
 from django.contrib.auth.models import User
+from django.db import models
+from django.utils import timezone
 
-# Create models to build a chat using websockets
-
-
-class Room(models.Model):
-    name = models.CharField(max_length=128)
-    label = models.SlugField(unique=True, max_length=128)
+class Room (models.Model):
+    label = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"Room({self.name})[{self.label}]"
-
+        return self.label
 
 class Message(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = models.TextField()
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    timestamp = models.DateTimeField(default=timezone.now, db_index=True)
 
     def __str__(self):
-        return f"Message(from:{self.user.username})(Room:{self.room.name})[content:{self.content}]"
+        return f"Message(from:{self.user.username})(Room:{self.room.label})[content:{self.message}]"
