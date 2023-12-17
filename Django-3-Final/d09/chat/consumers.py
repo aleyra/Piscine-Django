@@ -21,6 +21,7 @@ class ChatConsumer(WebsocketConsumer):
 
         self.accept()
         
+
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
@@ -29,6 +30,7 @@ class ChatConsumer(WebsocketConsumer):
                 'sender': self.username,
             }
         )
+
         if self.room_name in self.connected_users.keys():
             temp = self.connected_users[self.room_name]
             temp.append(self.username)
@@ -44,6 +46,16 @@ class ChatConsumer(WebsocketConsumer):
 
     def disconnect(self, close_code):
         # Leave room group
+
+        async_to_sync(self.channel_layer.group_send)(
+            self.room_group_name,
+            {
+                'type': 'chat_left',
+                'message': 'has left the chat',
+                'sender': self.username,
+            }
+        )
+
         async_to_sync(self.channel_layer.group_discard)(
             self.room_group_name, self.channel_name
         )
@@ -79,8 +91,11 @@ class ChatConsumer(WebsocketConsumer):
     def chat_joined(self, event):
         message = event["sender"] + " " + event["message"]
         self.send(text_data=json.dumps({"message": message}))
-        
-    
+
+    def chat_left(self, event):
+        message = event["sender"] + " " + event["message"]
+        self.send(text_data=json.dumps({"message": message}))
+
     def send_updated_user_list(self):
         print(self.room_name)
         print(self.connected_users)
