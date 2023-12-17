@@ -1,0 +1,28 @@
+<!-- publications.html -->
+{% extends 'ex00/base.html' %}
+
+{% block title %}{{ user.username }} 's publications{% endblock %}
+
+{% block content %}
+    <h2>{{ user.username }}'s</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Created</th>
+                <th>Synopsis</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in object_list %}
+                <tr>
+                    <td><a href="{% url 'detail' article.id %}"><b>{{ article.title }}</b></a></td>
+                    <td>{{ article.created|timesince }}</td>
+                    <td>{{ article.synopsis }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'publish' %}"><button> + </button></a>   
+{% endblock %}

@@ -1,0 +1,11 @@
+<div style="margin-top: 350px; font-size:10px; margin-left: 550px;">
+    {% if user.is_authenticated %}
+    <p>Logged as {{ user.username }} -- <a href="{% url 'logout' %}">Log out</a>
+    <br/><a href="{% url 'publications' %}">see my publications</a>
+    <br/><a href="{% url 'favourites' %}">see my favourites</a>
+    </p>
+
+    {% else %}
+    <p><a href="{% url 'login' %}">Log in</a>
+    {% endif %}
+</div>

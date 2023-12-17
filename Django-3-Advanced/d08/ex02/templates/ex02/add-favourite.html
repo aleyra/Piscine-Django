@@ -1,0 +1,14 @@
+{% if user.is_authenticated %}
+    {% if isFavourite %}
+        <p>⭐</p>
+    {% else %}
+    <form
+      action="{% url 'add-favourite' object.id %}"
+      method="post"
+    >
+      {% csrf_token %}
+      <button type="submit" name="article_id" value="{{ object.id }}">
+        Add to favourites</button>
+    </form>
+    {% endif %}
+{% endif %}

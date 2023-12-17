@@ -1,0 +1,19 @@
+<!-- ex00/base.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        {% block style %}
+            <link rel="stylesheet" type="text/css" href="{% static 'ex00/style.css' %}"/>
+        {% endblock %}
+    </head>
+    <body>
+        {% include 'ex03/menu.html' %}
+        {% block content %}{% endblock %}
+        {% include 'ex01/login.html' %}
+    </body>
+</html>

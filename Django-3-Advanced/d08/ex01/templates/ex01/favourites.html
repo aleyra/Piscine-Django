@@ -1,0 +1,13 @@
+<!-- favourites.html -->
+{% extends 'ex00/base.html' %}
+
+{% block title %}{{ user.username }}'s Favourites{% endblock %}
+
+{% block content %}
+    <h2>{{ user.username }} 's favourites</h2>
+    <ul>
+        {% for favourite in object_list %}
+            <li><a href="{% url 'detail' favourite.article.id %}"><b>{{ favourite.article.title }}</b></a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

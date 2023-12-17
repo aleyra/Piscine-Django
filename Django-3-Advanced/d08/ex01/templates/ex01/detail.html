@@ -1,0 +1,25 @@
+<!-- detail.html -->
+{% extends 'ex00/base.html' %}
+
+{% block title %}{{ object.title }} Detail{% endblock %}
+
+{% block content %}
+    <h2>{{ object.title }}</h2>
+    <h3>Synopsis</h3>
+    <p>{{ object.synopsis }}</p>
+    <h3>Content</h3>
+    <p>{{ object.content }}</p>
+    <br/>
+    <pre> by <b>{{ object.author }}</b> -- {{ object.created|timesince }}</pre>
+    <br/>
+
+
+    {% include 'ex02/add-favourite.html' %}
+
+    <p><a href="{% url 'articles' %}">Back to Articles</a></p> 
+    {% if user.is_authenticated %}  
+    <p><a href="{% url 'publications' %}">{{ user.username }}'s publications</a></p>
+    {% endif %}
+
+
+{% endblock %}

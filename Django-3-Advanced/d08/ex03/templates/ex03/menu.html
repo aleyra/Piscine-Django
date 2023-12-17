@@ -1,0 +1,38 @@
+<nav class="menu">
+
+    <div class="items">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if last_article_id %}
+            <li><a href="{% url 'detail' last_article_id %}">Last Article</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'favourites' %}">Favourites</a></li>
+            <li><a href="{% url 'publications' %}">Publications</a></li>
+            <li><a href="{% url 'publish' %}">Publish</a></li>
+            {% else %}
+            <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="log">
+        <ul>
+            {% if user.is_authenticated %}
+            <li>Logged as {{request.user.username}}</li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li>
+                <form id="login_form" action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <button type="submit">Login</button>
+                </form>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+</nav>
+  
