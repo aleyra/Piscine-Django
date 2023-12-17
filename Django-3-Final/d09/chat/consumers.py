@@ -6,6 +6,9 @@ from channels.generic.websocket import WebsocketConsumer
 from .models import Message, Room
 
 class ChatConsumer(WebsocketConsumer):
+
+    connected_users = {}
+
     def connect(self):
         self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
         self.room_group_name = "chat_%s" % self.room_name
@@ -26,6 +29,13 @@ class ChatConsumer(WebsocketConsumer):
                 'sender': self.username,
             }
         )
+        if self.room_name in self.connected_users.keys():
+            temp = self.connected_users[self.room_name]
+            temp.append(self.username)
+        else:
+            temp = [self.username]
+        self.connected_users.update({self.room_name : temp})
+        self.send_updated_user_list()
 
         # send last 3 messages
         messages = Message.objects.filter(room__label=self.room_name).order_by("-timestamp")[:3]
@@ -37,6 +47,8 @@ class ChatConsumer(WebsocketConsumer):
         async_to_sync(self.channel_layer.group_discard)(
             self.room_group_name, self.channel_name
         )
+        self.connected_users[self.room_name].remove(self.username)
+        self.send_updated_user_list()
 
     # Receive message from WebSocket
     def receive(self, text_data):
@@ -67,3 +79,12 @@ class ChatConsumer(WebsocketConsumer):
     def chat_joined(self, event):
         message = event["sender"] + " " + event["message"]
         self.send(text_data=json.dumps({"message": message}))
+        
+    
+    def send_updated_user_list(self):
+        print(self.room_name)
+        print(self.connected_users)
+        self.send(text_data=json.dumps({
+            'type': 'user_update',
+            'users': [{'username': username} for username in self.connected_users[self.room_name]]
+        }))

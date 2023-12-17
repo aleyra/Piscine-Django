@@ -10,6 +10,8 @@
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
     <input id="chat-message-input" type="text" size="100"><br>
     <input id="chat-message-submit" type="button" value="Send">
+    <br/>
+    <ul id="user-list"></ul>
     {{ room_name|json_script:"room-name" }}
     {{ username|json_script:"user-name" }}
     <script>
@@ -34,12 +36,23 @@
             document.querySelector('#chat-log').value = '';
         };
         chatSocket.onmessage = function(e) {
+            if (e.data == "")
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
-            scrollToBottom();
+            if (data.type === 'user_update') {
+                const connectedUsers = data.users;
+                updateConnectedUsersList(connectedUsers);
+                console.log("list")
+                console.log(connectedUsers)
+             } else {
+                 document.querySelector('#chat-log').value += (data.message + '\n');
+                 scrollToBottom()
+             }
         };
 
         chatSocket.onclose = function(e) {
+            /*chatSocket.send(JSON.stringify({
+                'command': 'user_connected'
+            }));*/
             console.error('Chat socket closed unexpectedly');
         };
 
@@ -58,6 +71,23 @@
             }));
             messageInputDom.value = '';
         };
+
+        function updateConnectedUsersList(users) {
+            console.log("Received users data:", users);
+            const userListContainer = document.getElementById('user-list');
+            userListContainer.innerHTML = '';
+
+            users.forEach(user => {
+                const userItem = document.createElement('li');
+                userItem.textContent = user.username;
+                console.log("user added in list = ", user.username)
+                userListContainer.appendChild(userItem);
+            });
+        }
+
+        setInterval(function() {
+            updateConnectedUsersList()
+        }, 500);
     </script>
 </body>
 </html>
