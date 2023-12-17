@@ -45,19 +45,14 @@ def register(request):
         name = Name(request.POST)
         pwd = Password(request.POST)
         pwd_conf = PasswordConfirmation(request.POST)
-        # register = RegisterForm(request.POST)
         if (
             name.is_valid() and pwd.is_valid() and pwd_conf.is_valid()
-            # register.is_valid()
         ):
             name = name.cleaned_data['name']
             pwd = pwd.cleaned_data['password']
             pwd_conf = pwd_conf.cleaned_data['password_confirmation']
-            # register = register.cleaned_data
             
             if pwd == pwd_conf:
-            # if register['password'] == register['password_confirm']:
-                # try:
                 if (
                     User.objects.filter(username=name).exists()
                     or name in ANONIMOUS_ALIASES
@@ -69,11 +64,10 @@ def register(request):
                     row = User(username=name)
                     row.set_password(pwd)
                     row.save()
-                    return HttpResponseRedirect(reverse('home'))
-                # except Exception as err:
-                #     message = f'Error: {err}'
-                #     context.update({'message': message})
-                #     return render(request, "ex/register.html", context)
+                    user = authenticate(username=name, password=pwd)
+                    if user is not None:
+                        login(request, user)
+                        return HttpResponseRedirect(reverse('home'))
             else:
                 message = "You haven't enter the same password for confirmation"
                 context.update ({'message': message})
@@ -91,9 +85,10 @@ def login_view(request):
         pwd = Password(request.POST)
         
         if name.is_valid() and pwd.is_valid():
-            name = name.cleaned_data['name']
-            pwd = pwd.cleaned_data['password']
-            user = authenticate(username=name, password=pwd)
+            context.update()({'form_name': Name(request.POST)})
+            name_res = name.cleaned_data['name']
+            pwd_res = pwd.cleaned_data['password']
+            user = authenticate(username=name_res, password=pwd_res)
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect(reverse('home'))
@@ -125,7 +120,6 @@ def tips(request):
             tip = tip.cleaned_data
             row = Tip(**tip)
             row.author = request.user.username
-            # row.author = request.session['name']
             row.save()
             message = f"tip : {tip['content']} saved"
             context.update({'message': message})
