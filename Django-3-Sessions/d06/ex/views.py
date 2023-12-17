@@ -85,7 +85,7 @@ def login_view(request):
         pwd = Password(request.POST)
         
         if name.is_valid() and pwd.is_valid():
-            context.update()({'form_name': Name(request.POST)})
+            context.update({'form_name': Name(request.POST)})
             name_res = name.cleaned_data['name']
             pwd_res = pwd.cleaned_data['password']
             user = authenticate(username=name_res, password=pwd_res)
