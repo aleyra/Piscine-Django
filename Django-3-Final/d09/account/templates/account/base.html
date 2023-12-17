@@ -1,23 +1,20 @@
-{% load bootstrap4 %}
+<!-- account/ajax-base.html -->
+
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% endblock title %} : Life Pro Tips</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    {% bootstrap_css %}
-    {% bootstrap_javascript jquery="full"%}
-  </head>
-  <body>
-    {% include 'ex/nav.html' %}
-    <br>
-    <div class="container">
-      {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
-      {% block content %} {% endblock content %}
-    </div>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}: last day</title>
+        {% block style %}
+            {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'account/style.css' %}"/> {% endcomment %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{% static 'account/main.js' %}"></script>
+    </body>
 </html>

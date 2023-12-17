@@ -1,0 +1,23 @@
+<!-- ajax.html -->
+{% extends 'account/ajax-base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block left %}
+<h2>content left</h2>
+
+    <div id="login-section">
+        <button type="submit" class="get_button">GET</button>
+    </div>
+    <ul id="seconds">
+        
+    </ul>
+{% endblock %}
+
+{% block right %}
+    <h2>content right</h2>
+    {% csrf_token %}
+    <ul id="right">
+        
+    </ul>
+{% endblock %}
