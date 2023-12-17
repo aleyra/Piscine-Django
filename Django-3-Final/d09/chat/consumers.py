@@ -26,7 +26,6 @@ class ChatConsumer(WebsocketConsumer):
                 'sender': self.username,
             }
         )
-        self.get_messages()
 
         # send last 3 messages
         messages = Message.objects.filter(room__label=self.room_name).order_by("-timestamp")[:3]
@@ -46,7 +45,7 @@ class ChatConsumer(WebsocketConsumer):
 
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name, {"type": "chat_message", "message": message}
+            self.room_group_name, {"type": "chat_message", "message": message, "sender": self.username}
         )
 
     # Receive message from room group
@@ -60,14 +59,11 @@ class ChatConsumer(WebsocketConsumer):
         room = Room.objects.filter(label=self.room_name).first()
         if not room:
             room = Room.objects.create(label=self.room_name)
-        Message.objects.create(room=room, user=self.scope["user"], message=message)
+        #check if sender is current user
+        if "sender" in event:
+            if event['sender'] == self.username:
+                Message.objects.create(room=room, user=self.scope["user"], message=message)
 
     def chat_joined(self, event):
         message = event["sender"] + " " + event["message"]
         self.send(text_data=json.dumps({"message": message}))
-
-    @database_sync_to_async
-    def get_messages(self):
-        messages = Message.objects.filter(room__label=self.room_name).order_by("-timestamp")[:3]
-        for message in reversed(messages):
-            async_to_sync(self.send)(text_data=json.dumps({"message": message.message, "username": message.user.username, "timestamp": message.timestamp.strftime("%H:%M")}))
