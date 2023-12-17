@@ -4,6 +4,8 @@ from django.shortcuts import render
 from d09.tools import isAjaxCustom, print_rouge
 from time import time
 
+# done with
+# https://www.youtube.com/watch?v=QDdLvImfq_g
 
 class AjaxHandlerView(View):
     def get(self, request):
